@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="YamlDotNet" Version="11.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WingetAppsLibrary">
+      <HintPath>..\Winget-Apps\WingetAppsLibrary\bin\Debug\net5.0\WingetAppsLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
