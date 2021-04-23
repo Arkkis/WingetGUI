@@ -4,7 +4,7 @@
 
 # How to get started
 
-Install Winget [https://github.com/microsoft/winget-cli/releases/latest]("https://github.com/microsoft/winget-cli/releases/latest")
+Install Winget (appxbundle) from ```https://github.com/microsoft/winget-cli/releases/latest```
 
 Clone this repository to your device with
 ```git clone https://github.com/Arkkis/WingetGUI.git```
