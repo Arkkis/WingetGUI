@@ -1,4 +1,8 @@
-# How to use
+# How it looks
+
+![image](https://user-images.githubusercontent.com/1597688/115911306-97836900-a476-11eb-9038-cc467e4daa1d.png)
+
+# How to get started
 
 Clone this repository to your device with
 ```git clone https://github.com/Arkkis/WingetGUI.git```
