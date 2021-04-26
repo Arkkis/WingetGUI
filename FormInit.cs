@@ -16,7 +16,10 @@ namespace WingetGui
                 searchBox.Items.Add(app.Name);
             }
 
-            searchBox.SelectedIndex = 0;
+            if (searchBox.Items.Count > 0)
+            {
+                searchBox.SelectedIndex = 0;
+            }
         }
 
         public async Task<List<WingetAppsLibrary.AppDto>> GetApps()
