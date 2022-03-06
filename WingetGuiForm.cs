@@ -10,7 +10,7 @@ namespace WingetGui
 {
     public partial class WingetGuiForm : Form
     {
-        private List<WingetAppsLibrary.AppDto> apps = new();
+        private List<AppDto> apps = new();
         private BackgroundWorker backgroundWorker;
 
         public WingetGuiForm()
@@ -74,7 +74,7 @@ namespace WingetGui
 
             foreach (var selectedApp in selectedApps)
             {
-                appList.Add(apps.FirstOrDefault(app => app.Name == selectedApp.ToString()).PackageId);
+                appList.Add(apps.FirstOrDefault(app => app.packageName == selectedApp.ToString()).packageIdentifier);
             }
 
             installButton.Enabled = false;
@@ -137,7 +137,7 @@ namespace WingetGui
 
         private void SearchBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            descriptionTextbox.Text = apps.FirstOrDefault(app => app.Name == searchBox.SelectedItem.ToString()).ShortDescription;
+            descriptionTextbox.Text = apps.FirstOrDefault(app => app.packageName == searchBox.SelectedItem.ToString()).description;
         }
     }
 }
