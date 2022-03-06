@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Linq;
-using System.ComponentModel;
-using System.Threading;
 
 namespace WingetGui
 {
     public partial class WingetGuiForm : Form
     {
         private List<AppDto> apps = new();
-        private BackgroundWorker backgroundWorker;
 
         public WingetGuiForm()
         {
@@ -21,44 +18,12 @@ namespace WingetGui
 
         private async void Start()
         {
-            backgroundWorker = new BackgroundWorker();
-            backgroundWorker.DoWork += new DoWorkEventHandler(SleepThread);
-            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
-            backgroundWorker.WorkerSupportsCancellation = true;
-            backgroundWorker.RunWorkerAsync();
-
             var formInit = new FormInit();
             apps = await formInit.GetApps();
 
             FormInit.FillSearchBox(apps, searchBox);
 
-            if (backgroundWorker.IsBusy)
-            {
-                backgroundWorker.CancelAsync();
-            }
-
             total.Text = $"{searchBox.Items.Count}";
-        }
-
-        private void SleepThread(object sender, DoWorkEventArgs e)
-        {
-            Thread.Sleep(50);
-        }
-
-        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (total.Text.StartsWith("L"))
-            {
-                if (WingetAppsLibrary.WingetApps.GetWingetAppsEstimatedTotal != WingetAppsLibrary.WingetApps.GetWingetAppsItemsDone)
-                {
-                    total.Text = $"Loading - {WingetAppsLibrary.WingetApps.GetWingetAppsItemsDone}/{WingetAppsLibrary.WingetApps.GetWingetAppsEstimatedTotal}";
-                    backgroundWorker.RunWorkerAsync();
-                }
-            }
-            else
-            {
-                total.Text = $"{searchBox.Items.Count}";
-            }
         }
 
         private void InstallButton_Click(object sender, EventArgs e)

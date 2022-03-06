@@ -6,10 +6,4 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="WingetAppsLibrary">
-      <HintPath>..\Winget-Apps\WingetAppsLibrary\bin\Debug\net5.0\WingetAppsLibrary.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
